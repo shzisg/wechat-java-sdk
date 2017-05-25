@@ -16,8 +16,6 @@ import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Map;
 
@@ -35,14 +33,9 @@ public class MaterialUploadRequestExecutor implements RequestExecutor<WxMpMateri
             throw new WxErrorException(WxError.newBuilder().setErrorMsg("非法请求，material参数为空").build());
         }
 
-        File file = material.getFile();
-        if (file == null || !file.exists()) {
-            throw new FileNotFoundException();
-        }
-
         MultipartEntityBuilder multipartEntityBuilder = MultipartEntityBuilder.create();
         multipartEntityBuilder
-            .addBinaryBody("media", file)
+            .addBinaryBody("media", material.getInputStream(), ContentType.create(material.getContentType()), material.getName())
             .setMode(HttpMultipartMode.RFC6532);
         Map<String, String> form = material.getForm();
         if (material.getForm() != null) {

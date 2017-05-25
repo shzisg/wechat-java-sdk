@@ -91,7 +91,7 @@ public interface WxMpMaterialService {
      * @return WxMediaImgUploadResult 返回图片url
      * @throws WxErrorException
      */
-    WxMediaImgUploadResult mediaImgUpload(File file) throws WxErrorException;
+    WxMediaImgUploadResult mediaImgUpload(WxMpFile file) throws WxErrorException;
     
     /**
      * <pre>

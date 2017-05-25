@@ -1,22 +1,23 @@
 package me.chanjar.weixin.mp.bean.material;
 
-import java.io.File;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
 public class WxMpMaterial {
 
     private String name;
-    private File file;
+    private InputStream inputStream;
+    private String contentType;
     private String videoTitle;
     private String videoIntroduction;
 
     public WxMpMaterial() {
     }
-
-    public WxMpMaterial(String name, File file, String videoTitle, String videoIntroduction) {
+    
+    public WxMpMaterial(String name, InputStream inputStream, String contentType,  String videoTitle, String videoIntroduction) {
         this.name = name;
-        this.file = file;
+        this.inputStream = inputStream;
         this.videoTitle = videoTitle;
         this.videoIntroduction = videoIntroduction;
     }
@@ -51,17 +52,25 @@ public class WxMpMaterial {
     public void setName(String name) {
         this.name = name;
     }
-
-    public File getFile() {
-        return this.file;
+    
+    public InputStream getInputStream() {
+        return inputStream;
     }
-
-    public void setFile(File file) {
-        this.file = file;
+    
+    public void setInputStream(InputStream inputStream) {
+        this.inputStream = inputStream;
     }
-
+    
+    public String getContentType() {
+        return contentType;
+    }
+    
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
+    }
+    
     @Override
     public String toString() {
-        return "WxMpMaterial [" + "name=" + this.name + ", file=" + this.file + ", videoTitle=" + this.videoTitle + ", videoIntroduction=" + this.videoIntroduction + "]";
+        return "WxMpMaterial [" + "name=" + this.name + ", videoTitle=" + this.videoTitle + ", videoIntroduction=" + this.videoIntroduction + "]";
     }
 }

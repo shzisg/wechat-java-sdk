@@ -5,6 +5,7 @@ import me.chanjar.weixin.common.exception.WxErrorException;
 import me.chanjar.weixin.common.util.http.RequestExecutor;
 import me.chanjar.weixin.common.util.http.Utf8ResponseHandler;
 import me.chanjar.weixin.mp.bean.material.WxMediaImgUploadResult;
+import me.chanjar.weixin.mp.bean.material.WxMpFile;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHost;
 import org.apache.http.client.config.RequestConfig;
@@ -15,16 +16,15 @@ import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
 
-import java.io.File;
 import java.io.IOException;
 
 /**
  * @author miller
  */
-public class MediaImgUploadRequestExecutor implements RequestExecutor<WxMediaImgUploadResult, File> {
+public class MediaImgUploadRequestExecutor implements RequestExecutor<WxMediaImgUploadResult, WxMpFile> {
     @Override
-    public WxMediaImgUploadResult execute(CloseableHttpClient httpclient, HttpHost httpProxy, String uri, File data) throws WxErrorException, IOException {
-        if (data == null) {
+    public WxMediaImgUploadResult execute(CloseableHttpClient httpclient, HttpHost httpProxy, String uri, WxMpFile file) throws WxErrorException, IOException {
+        if (file == null) {
             throw new WxErrorException(WxError.newBuilder().setErrorMsg("文件对象为空").build());
         }
 
@@ -36,7 +36,7 @@ public class MediaImgUploadRequestExecutor implements RequestExecutor<WxMediaImg
 
         HttpEntity entity = MultipartEntityBuilder
             .create()
-            .addBinaryBody("media", data)
+            .addBinaryBody("media", file.getStream(), ContentType.create(file.getContentType()), file.getFilename())
             .setMode(HttpMultipartMode.RFC6532)
             .build();
         httpPost.setEntity(entity);

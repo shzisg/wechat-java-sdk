@@ -59,7 +59,7 @@ public class WxMpMaterialServiceImpl implements WxMpMaterialService {
     }
 
     @Override
-    public WxMediaImgUploadResult mediaImgUpload(File file) throws WxErrorException {
+    public WxMediaImgUploadResult mediaImgUpload(WxMpFile file) throws WxErrorException {
         String url = MEDIA_API_URL_PREFIX + "/uploadimg";
         return this.wxMpService.execute(new MediaImgUploadRequestExecutor(), url, file);
     }
