@@ -14,7 +14,7 @@
         <module>wechat-java-common</module>
         <module>wechat-java-cp</module>
         <module>wechat-java-mp</module>
-        <module>weixin-java-pay</module>
+        <module>wechat-java-pay</module>
     </modules>
 
     <properties>
