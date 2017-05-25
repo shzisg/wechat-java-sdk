@@ -13,45 +13,45 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 @XStreamAlias("xml")
 public class WxPayUnifiedOrderResult extends WxPayBaseResult {
 
-  /**
-   * 微信生成的预支付回话标识，用于后续接口调用中使用，该值有效期为2小时
-   */
-  @XStreamAlias("prepay_id")
-  private String prepayId;
+    /**
+     * 微信生成的预支付回话标识，用于后续接口调用中使用，该值有效期为2小时
+     */
+    @XStreamAlias("prepay_id")
+    private String prepayId;
 
-  /**
-   * 交易类型，取值为：JSAPI，NATIVE，APP等
-   */
-  @XStreamAlias("trade_type")
-  private String tradeType;
+    /**
+     * 交易类型，取值为：JSAPI，NATIVE，APP等
+     */
+    @XStreamAlias("trade_type")
+    private String tradeType;
 
-  /**
-   * trade_type为NATIVE时有返回，用于生成二维码，展示给用户进行扫码支付
-   */
-  @XStreamAlias("code_url")
-  private String codeURL;
+    /**
+     * trade_type为NATIVE时有返回，用于生成二维码，展示给用户进行扫码支付
+     */
+    @XStreamAlias("code_url")
+    private String codeURL;
 
-  public String getPrepayId() {
-    return this.prepayId;
-  }
+    public String getPrepayId() {
+        return this.prepayId;
+    }
 
-  public void setPrepayId(String prepayId) {
-    this.prepayId = prepayId;
-  }
+    public void setPrepayId(String prepayId) {
+        this.prepayId = prepayId;
+    }
 
-  public String getTradeType() {
-    return this.tradeType;
-  }
+    public String getTradeType() {
+        return this.tradeType;
+    }
 
-  public void setTradeType(String tradeType) {
-    this.tradeType = tradeType;
-  }
+    public void setTradeType(String tradeType) {
+        this.tradeType = tradeType;
+    }
 
-  public String getCodeURL() {
-    return this.codeURL;
-  }
+    public String getCodeURL() {
+        return this.codeURL;
+    }
 
-  public void setCodeURL(String codeURL) {
-    this.codeURL = codeURL;
-  }
+    public void setCodeURL(String codeURL) {
+        this.codeURL = codeURL;
+    }
 }

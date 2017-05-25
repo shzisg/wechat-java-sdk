@@ -11,36 +11,36 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
  */
 @XStreamAlias("xml")
 public class WxPayShorturlRequest extends WxPayBaseRequest {
-  /**
-   * <pre>
-   * URL链接
-   * long_url
-   * 是
-   * String(512)
-   * weixin：//wxpay/bizpayurl?sign=XXXXX&appid=XXXXX&mch_id=XXXXX&product_id=XXXXXX&time_stamp=XXXXXX&nonce_str=XXXXX
-   * 需要转换的URL，签名用原串，传输需URLencode
-   * </pre>
-   */
-  @XStreamAlias("long_url")
-  private String longUrl;
+    /**
+     * <pre>
+     * URL链接
+     * long_url
+     * 是
+     * String(512)
+     * weixin：//wxpay/bizpayurl?sign=XXXXX&appid=XXXXX&mch_id=XXXXX&product_id=XXXXXX&time_stamp=XXXXXX&nonce_str=XXXXX
+     * 需要转换的URL，签名用原串，传输需URLencode
+     * </pre>
+     */
+    @XStreamAlias("long_url")
+    private String longUrl;
 
-  public String getLongUrl() {
-    return this.longUrl;
-  }
+    public WxPayShorturlRequest() {
+    }
 
-  public void setLongUrl(String longUrl) {
-    this.longUrl = longUrl;
-  }
+    public WxPayShorturlRequest(String longUrl) {
+        this.longUrl = longUrl;
+    }
 
-  public WxPayShorturlRequest() {
-  }
+    public String getLongUrl() {
+        return this.longUrl;
+    }
 
-  public WxPayShorturlRequest(String longUrl) {
-    this.longUrl = longUrl;
-  }
+    public void setLongUrl(String longUrl) {
+        this.longUrl = longUrl;
+    }
 
-  @Override
-  protected void checkConstraints() {
-    //do nothing
-  }
+    @Override
+    protected void checkConstraints() {
+        //do nothing
+    }
 }

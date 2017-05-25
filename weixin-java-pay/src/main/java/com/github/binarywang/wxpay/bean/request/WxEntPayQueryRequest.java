@@ -21,36 +21,36 @@ import me.chanjar.weixin.common.util.ToStringUtils;
  */
 @XStreamAlias("xml")
 public class WxEntPayQueryRequest extends WxPayBaseRequest {
-  /**
-   * <pre>
-   * 商户订单号
-   * partner_trade_no
-   * 是
-   * 10000098201411111234567890
-   * String
-   * 商户订单号
-   * </pre>
-   */
-  @Required
-  @XStreamAlias("partner_trade_no")
-  private String partnerTradeNo;
+    /**
+     * <pre>
+     * 商户订单号
+     * partner_trade_no
+     * 是
+     * 10000098201411111234567890
+     * String
+     * 商户订单号
+     * </pre>
+     */
+    @Required
+    @XStreamAlias("partner_trade_no")
+    private String partnerTradeNo;
 
-  public String getPartnerTradeNo() {
-    return this.partnerTradeNo;
-  }
+    public String getPartnerTradeNo() {
+        return this.partnerTradeNo;
+    }
 
-  public void setPartnerTradeNo(String partnerTradeNo) {
-    this.partnerTradeNo = partnerTradeNo;
-  }
+    public void setPartnerTradeNo(String partnerTradeNo) {
+        this.partnerTradeNo = partnerTradeNo;
+    }
 
-  @Override
-  protected void checkConstraints() {
-    //do nothing
-  }
+    @Override
+    protected void checkConstraints() {
+        //do nothing
+    }
 
-  @Override
-  public String toString() {
-    return ToStringUtils.toSimpleString(this);
-  }
+    @Override
+    public String toString() {
+        return ToStringUtils.toSimpleString(this);
+    }
 
 }

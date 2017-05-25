@@ -13,26 +13,26 @@ import java.io.InputStream;
 
 public class ApiTestModule implements Module {
 
-  @Override
-  public void configure(Binder binder) {
-    try (InputStream is1 = ClassLoader.getSystemResourceAsStream("test-config.xml")) {
-      XmlWxPayConfig config = this.fromXml(XmlWxPayConfig.class, is1);
-      WxPayService wxService = new WxPayServiceImpl();
-      wxService.setConfig(config);
+    @Override
+    public void configure(Binder binder) {
+        try (InputStream is1 = ClassLoader.getSystemResourceAsStream("test-config.xml")) {
+            XmlWxPayConfig config = this.fromXml(XmlWxPayConfig.class, is1);
+            WxPayService wxService = new WxPayServiceImpl();
+            wxService.setConfig(config);
 
-      binder.bind(WxPayService.class).toInstance(wxService);
-      binder.bind(WxPayConfig.class).toInstance(config);
-    } catch (IOException e) {
-      e.printStackTrace();
+            binder.bind(WxPayService.class).toInstance(wxService);
+            binder.bind(WxPayConfig.class).toInstance(config);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-  }
 
-  @SuppressWarnings("unchecked")
-  private <T> T fromXml(Class<T> clazz, InputStream is) {
-    XStream xstream = XStreamInitializer.getInstance();
-    xstream.alias("xml", clazz);
-    xstream.processAnnotations(clazz);
-    return (T) xstream.fromXML(is);
-  }
+    @SuppressWarnings("unchecked")
+    private <T> T fromXml(Class<T> clazz, InputStream is) {
+        XStream xstream = XStreamInitializer.getInstance();
+        xstream.alias("xml", clazz);
+        xstream.processAnnotations(clazz);
+        return (T) xstream.fromXML(is);
+    }
 
 }
