@@ -8,6 +8,7 @@ public class WxMpMaterial {
 
     private String name;
     private InputStream inputStream;
+    private byte[] content;
     private String contentType;
     private String videoTitle;
     private String videoIntroduction;
@@ -67,6 +68,14 @@ public class WxMpMaterial {
     
     public void setContentType(String contentType) {
         this.contentType = contentType;
+    }
+    
+    public byte[] getContent() {
+        return content;
+    }
+    
+    public void setContent(byte[] content) {
+        this.content = content;
     }
     
     @Override

@@ -5,6 +5,7 @@ import java.io.InputStream;
 public class WxMpFile {
     private String filename;
     private InputStream stream;
+    private byte[] content;
     private String contentType;
     
     public String getFilename() {
@@ -29,5 +30,13 @@ public class WxMpFile {
     
     public void setContentType(String contentType) {
         this.contentType = contentType;
+    }
+    
+    public byte[] getContent() {
+        return content;
+    }
+    
+    public void setContent(byte[] content) {
+        this.content = content;
     }
 }

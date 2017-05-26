@@ -67,7 +67,7 @@ public class WxMpMaterialServiceImplTest {
             File tempFile = FileUtils.createTmpFile(inputStream,
                 UUID.randomUUID().toString(), fileType);
             WxMpMaterial wxMaterial = new WxMpMaterial();
-            wxMaterial.setFile(tempFile);
+//            wxMaterial.setFile();
             wxMaterial.setName(fileName);
             if (WxConsts.MEDIA_VIDEO.equals(mediaType)) {
                 wxMaterial.setVideoTitle("title");

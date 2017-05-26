@@ -34,9 +34,12 @@ public class MaterialUploadRequestExecutor implements RequestExecutor<WxMpMateri
         }
 
         MultipartEntityBuilder multipartEntityBuilder = MultipartEntityBuilder.create();
-        multipartEntityBuilder
-            .addBinaryBody("media", material.getInputStream(), ContentType.create(material.getContentType()), material.getName())
-            .setMode(HttpMultipartMode.RFC6532);
+        if (material.getContent() != null) {
+            multipartEntityBuilder.addBinaryBody("media", material.getContent(), ContentType.create(material.getContentType()), material.getName());
+        } else {
+            multipartEntityBuilder.addBinaryBody("media", material.getInputStream(), ContentType.create(material.getContentType()), material.getName());
+        }
+        multipartEntityBuilder.setMode(HttpMultipartMode.RFC6532);
         Map<String, String> form = material.getForm();
         if (material.getForm() != null) {
             multipartEntityBuilder.addTextBody("description", WxGsonBuilder.create().toJson(form));

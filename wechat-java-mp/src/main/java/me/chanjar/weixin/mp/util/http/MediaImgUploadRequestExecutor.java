@@ -33,10 +33,14 @@ public class MediaImgUploadRequestExecutor implements RequestExecutor<WxMediaImg
             RequestConfig config = RequestConfig.custom().setProxy(httpProxy).build();
             httpPost.setConfig(config);
         }
-
-        HttpEntity entity = MultipartEntityBuilder
-            .create()
-            .addBinaryBody("media", file.getStream(), ContentType.create(file.getContentType()), file.getFilename())
+    
+        MultipartEntityBuilder entityBuilder = MultipartEntityBuilder.create();
+        if (file.getContent() != null) {
+            entityBuilder.addBinaryBody("media", file.getContent(), ContentType.create(file.getContentType()), file.getFilename());
+        } else {
+            entityBuilder.addBinaryBody("media", file.getStream(), ContentType.create(file.getContentType()), file.getFilename());
+        }
+        HttpEntity entity = entityBuilder
             .setMode(HttpMultipartMode.RFC6532)
             .build();
         httpPost.setEntity(entity);
