@@ -135,11 +135,11 @@ public class WxPayConfig {
     }
 
     public SSLContext initSSLContext() {
-        if (null == mchId) {
+        if (null == getMchId()) {
             throw new IllegalArgumentException("请确保商户号mch_id已设置");
         }
 
-        File file = new File(this.keyPath);
+        File file = new File(this.getKeyPath());
         if (!file.exists()) {
             throw new RuntimeException("证书文件：【" + file.getPath() + "】不存在！");
         }
@@ -147,7 +147,7 @@ public class WxPayConfig {
         try {
             FileInputStream inputStream = new FileInputStream(file);
             KeyStore keystore = KeyStore.getInstance("PKCS12");
-            char[] partnerId2charArray = mchId.toCharArray();
+            char[] partnerId2charArray = this.getMchId().toCharArray();
             keystore.load(inputStream, partnerId2charArray);
             this.sslContext = SSLContexts.custom().loadKeyMaterial(keystore, partnerId2charArray).build();
             return this.sslContext;
