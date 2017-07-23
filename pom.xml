@@ -7,7 +7,7 @@
 
     <groupId>com.shzisg</groupId>
     <artifactId>wechat-java-sdk</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <packaging>pom</packaging>
 
     <modules>
@@ -15,6 +15,7 @@
         <module>wechat-java-cp</module>
         <module>wechat-java-mp</module>
         <module>wechat-java-pay</module>
+        <module>wechat-java-miniapp</module>
     </modules>
 
     <properties>
